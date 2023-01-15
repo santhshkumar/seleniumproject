@@ -1,0 +1,92 @@
+package seleniumpractice2;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.io.FileInputStream;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Reporter;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+
+import seleniumpractice.OrangeHRMProject
+
+public class seleniumproject {
+	static {
+		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
+	}
+	WebDriver driver;
+	FileInputStream fis;
+	Properties p;
+	OrangeHRMProject l;
+	@BeforeClass
+	public void openbrowser() {
+		Reporter.log("open the browser",true);
+	}
+	@AfterMethod
+	public void logout() {
+		Reporter.log("logout browser",true);
+		l.clickon_profile_button("profil");
+		l.clickon_logout_button("logot");
+	}
+	@BeforeMethod
+	public void login() throws java.io.IOException, InterruptedException, AWTException  {
+		Reporter.log("login the browser",true);
+		
+		fis=new FileInputStream("./data/orangehrm.txt");
+		p=new Properties();
+		p.load(fis);
+		String link = p.getProperty("URL");
+		String link2 = p.getProperty("UN");
+		String link3 = p.getProperty("PW");
+		driver=new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		
+		driver.get(link);
+		l = new OrangeHRMProject();
+		PageFactory.initElements(driver, l);
+		Thread.sleep(3000);
+		l.loginpage(link2, link3);
+		l.clickon_admin_button("adm");
+		l.clickon_qualification_button("qty");
+		l.clickon_skills_button("skil");
+		l.clickon_add_button("ad");
+		l.clickon_addname_button("manuel");
+		l.clickon_addsave_button("adsave");
+		l.clickon_edit_button("edi");
+		
+		Robot r = new Robot(); 
+		r.keyPress(KeyEvent.VK_BACK_SPACE);
+		Thread.sleep(3000);
+		r.keyPress(KeyEvent.VK_BACK_SPACE);
+		Thread.sleep(3000);
+		r.keyPress(KeyEvent.VK_BACK_SPACE);
+		Thread.sleep(3000);
+		r.keyPress(KeyEvent.VK_BACK_SPACE);
+		Thread.sleep(3000);
+		r.keyPress(KeyEvent.VK_BACK_SPACE);
+		Thread.sleep(3000);
+		l.clickon_editname_button("automation testing");
+		Thread.sleep(3000);
+		l.clickon_editsave_button("editsav");
+		Thread.sleep(3000);
+		l.clickon_delte_button("del");
+		Thread.sleep(3000);
+		l.clickon_yesdelete_button("yesdel");
+		
+	
+	}
+	@AfterClass
+	public void closebrowser() {
+		Reporter.log("close the browser",true);
+		driver.close();
+	}
+}

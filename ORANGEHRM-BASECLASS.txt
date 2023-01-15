@@ -1,0 +1,13 @@
+package seleniumpractice3;
+
+import org.testng.Reporter;
+import org.testng.annotations.Test;
+
+import seleniumpractice2.seleniumproject;
+
+public class login extends seleniumproject {
+@Test
+public void loginpage() {
+	Reporter.log("login successfully",true);
+}
+}

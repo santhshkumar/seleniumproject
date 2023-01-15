@@ -1,0 +1,113 @@
+package seleniumpractice;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class OrangeHRMProject {
+/**
+ * I HAVE ONE CREATE FREAME WORK
+ * ORANGEHRM APPLICATION
+ * By Using POM,TESTNG,BASECLASS
+ * MODULE NAME-QUALIFICATION
+ * QUALIFICATION(ADDING,EDITING,DELETING)
+ */
+	//DELCARATION
+	@FindBy(name = "username")
+	private WebElement untb;
+	
+	@FindBy(name = "password")
+	private WebElement pwtb;
+	
+	@FindBy(xpath = "//button[.=' Login ']")
+	private WebElement lgb;
+
+	@FindBy(xpath = "//span[.='Admin']")
+	private WebElement admin;
+	
+	@FindBy(xpath = "//span[.='Qualifications ']")
+	private WebElement qualification;
+	
+	@FindBy(xpath = "//a[.='Skills']")
+	private WebElement skills;
+	
+	@FindBy(xpath = "//button[.=' Add ']")
+	private WebElement add;
+	
+	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[2]")
+	private WebElement addname;
+	
+	@FindBy(xpath = "//button[.=' Save ']")
+	private WebElement save;
+	
+	@FindBy(xpath = "(//i[@class='oxd-icon bi-pencil-fill'])[9]")
+	private WebElement edit;
+	
+	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[2]")
+	private WebElement editname;
+	
+	
+	@FindBy(xpath = "//button[.=' Save ']")
+	private WebElement save2;
+	
+	@FindBy(xpath = "(//i[@class='oxd-icon bi-trash'])[1]")
+	private WebElement delete;
+	
+	@FindBy(xpath = "//button[.=' Yes, Delete ']")
+	private WebElement yesdelete;
+	
+	@FindBy(xpath = "//i[@class='oxd-icon bi-caret-down-fill oxd-userdropdown-icon']")
+	private WebElement profile;
+	
+	@FindBy(xpath = "(//a[@class='oxd-userdropdown-link'])[4]")
+	private WebElement logout;
+	
+	
+	//UTILIZATION
+	public void loginpage(String un,String pw) {
+		untb.sendKeys(un);
+		pwtb.sendKeys(pw);
+		lgb.click();
+	}
+	public void clickon_admin_button(String adm) {
+		admin.click();
+	}
+	public void clickon_qualification_button(String qty) {
+		qualification.click();
+	}
+	public void clickon_skills_button(String skil) {
+		skills.click();
+	}
+	public void clickon_add_button(String ad) {
+		add.click();
+	}
+	public void clickon_addname_button(String adnam) {
+
+		addname.sendKeys(adnam);
+	}
+	public void clickon_addsave_button(String adsave) {
+		save.click();
+	}
+	public void clickon_edit_button(String edi) {
+		edit.click();
+	}
+	
+	public void clickon_editname_button(String editnam) {
+		editname.sendKeys(editnam);
+	}
+	
+	public void clickon_editsave_button(String editsav) {
+		save2.click();
+	}
+	public void clickon_delte_button(String del) {
+		delete.click();
+	}
+	public void clickon_yesdelete_button(String yesdel) {
+		yesdelete.click();
+	}
+	public void clickon_profile_button(String profil) {
+		profile.click();
+	}
+	public void clickon_logout_button(String logot) {
+		logout.click();
+	}
+}
